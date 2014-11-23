@@ -13,7 +13,7 @@ container manually - it goes away when you quit the browser.
 ```shell
 git clone https://github.com/mook/docker-torbrowser.git
 cd docker-torbrowser
-docker build -t torbrowser .
+docker build -t mook/docker-torbrowser .
 ```
 
 # Requirements #

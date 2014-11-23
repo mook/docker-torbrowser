@@ -12,4 +12,4 @@ exec docker run \
     --volume $PWD/Downloads:/tor-browser/Browser/Downloads \
     --workdir /tor-browser \
     --user 1000 \
-    torbrowser:${TAG:-latest}
+    mook/docker-torbrowser:${TAG:-latest}
