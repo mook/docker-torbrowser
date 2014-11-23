@@ -1,0 +1,15 @@
+#!/bin/sh
+# vim: set et ts=4 :
+
+mkdir -p Downloads
+
+exec docker run \
+    --rm \
+    --env XAUTHDATA="`/usr/bin/xauth nextract - ${DISPLAY}`" \
+    --env DISPLAY=${DISPLAY} \
+    --hostname `hostname` \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    --volume $PWD/Downloads:/tor-browser/Browser/Downloads \
+    --workdir /tor-browser \
+    --user 1000 \
+    torbrowser:${TAG:-latest}
