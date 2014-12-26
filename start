@@ -11,5 +11,6 @@ exec docker run \
     --volume /tmp/.X11-unix:/tmp/.X11-unix \
     --volume $PWD/Downloads:/tor-browser/Browser/Downloads \
     --workdir /tor-browser \
+    --publish 9153 \
     --user 1000 \
     mook/docker-torbrowser:${TAG:-latest}

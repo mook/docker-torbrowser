@@ -19,4 +19,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 RUN useradd --uid 1000 --create-home docker-user \
     && true
 
+# leave 9150 alone, otherwise the browser complains
+RUN echo 'SocksPort 0.0.0.0:9153' >> /tor-browser/Browser/TorBrowser/Data/Tor/torrc-defaults
+
 CMD touch ${HOME}/.Xauthority ; echo "${XAUTHDATA}" | /usr/bin/xauth nmerge - && /tor-browser/start-tor-browser
