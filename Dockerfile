@@ -5,6 +5,9 @@ FROM debian:jessie
 ENV TOR_VERSION 4.0.2
 ENV TOR_LANGUAGE en-US
 
+RUN useradd --uid 1000 --create-home docker-user \
+    && true
+
 RUN export DEBIAN_FRONTEND=noninteractive \
     && TOR_URL=https://dist.torproject.org/torbrowser/${TOR_VERSION}/tor-browser-linux64-${TOR_VERSION}_${TOR_LANGUAGE}.tar.xz \
     && apt-get update -q \
@@ -15,9 +18,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get remove -qy iceweasel \
     && apt-get clean \
     && rm -fr /var/lib/apt/lists/
-
-RUN useradd --uid 1000 --create-home docker-user \
-    && true
 
 # leave 9150 alone, otherwise the browser complains
 RUN echo 'SocksPort 0.0.0.0:9153' >> /tor-browser/Browser/TorBrowser/Data/Tor/torrc-defaults
