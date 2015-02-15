@@ -22,4 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 # leave 9150 alone, otherwise the browser complains
 RUN echo 'SocksPort 0.0.0.0:9153' >> /tor-browser/Browser/TorBrowser/Data/Tor/torrc-defaults
 
+WORKDIR /tor-browser/
+USER docker-user
+
 CMD touch ${HOME}/.Xauthority ; echo "${XAUTHDATA}" | /usr/bin/xauth nmerge - && /tor-browser/start-tor-browser
