@@ -2,7 +2,7 @@
 
 FROM debian:jessie
 
-ENV TOR_VERSION 4.0.2
+ENV TOR_VERSION 4.0.3
 ENV TOR_LANGUAGE en-US
 
 RUN useradd --uid 1000 --create-home docker-user \
